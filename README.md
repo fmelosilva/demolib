@@ -1,3 +1,3 @@
 # DemoLib
 
-[![Coverage Status](https://coveralls.io/repos/github/fmelosilva/demolib/badge.svg?branch=main)](https://coveralls.io/github/fmelosilva/demolib?branch=main)
+[![codecov](https://codecov.io/gh/fmelosilva/demolib/branch/main/graph/badge.svg?token=JDA6P27SZ2)](https://codecov.io/gh/fmelosilva/demolib)
