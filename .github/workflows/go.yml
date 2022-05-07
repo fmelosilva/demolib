@@ -23,7 +23,7 @@ jobs:
   
     - name: Run tests
       run: |
-        go test -race -covermode count -coverprofile=covprofile ./...
+        go test -race -covermode atomic -coverprofile=covprofile ./...
 
     - name: Install goveralls
       run: go install github.com/mattn/goveralls@latest
