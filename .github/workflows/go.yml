@@ -21,10 +21,14 @@ jobs:
     - name: Build
       run: go build -v ./...
   
-    - name: Run Test
-      run: go test -v -coverprofile=profile.cov ./...
+    - name: Run tests
+      run: |
+        go test -race -covermode atomic -coverprofile=covprofile ./...
 
-    - name: Goveralls
-      uses: shogo82148/actions-goveralls@v1.6.0
-      with:
-        path-to-profile: profile.cov
+    - name: Install goveralls
+      run: go install github.com/mattn/goveralls@latest
+    
+    - name: Send coverage
+      env:
+        COVERALLS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: goveralls -coverprofile=covprofile -service=github
