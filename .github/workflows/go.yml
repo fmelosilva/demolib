@@ -21,14 +21,8 @@ jobs:
     - name: Build
       run: go build -v ./...
   
-    - name: Run tests
-      run: |
-        go test -race -covermode atomic -coverprofile=covprofile ./...
+    - name: Run coverage
+      run: go test -race -coverprofile=coverage.txt -covermode=atomic
 
-    - name: Install goveralls
-      run: go install github.com/mattn/goveralls@latest
-    
-    - name: Send coverage
-      env:
-        COVERALLS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: goveralls -coverprofile=covprofile -service=github
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v2
